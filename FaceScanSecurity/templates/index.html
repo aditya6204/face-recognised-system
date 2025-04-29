@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title mb-0 text-center">
+                    <i class="fas fa-shield-alt"></i> Face Recognition Authentication System
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <i class="fas fa-camera-retro fa-4x mb-3 text-primary"></i>
+                    <h4>Welcome to the Face Recognition System</h4>
+                    <p class="lead">Use your face as your password!</p>
+                </div>
+                
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <i class="fas fa-user-plus fa-3x text-info mb-3"></i>
+                                <h5 class="card-title">Enroll</h5>
+                                <p class="card-text">Register your face in the system</p>
+                                <a href="{{ url_for('enroll') }}" class="btn btn-outline-info">Start Enrollment</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <i class="fas fa-lock fa-3x text-success mb-3"></i>
+                                <h5 class="card-title">Verify</h5>
+                                <p class="card-text">Verify your identity using your face</p>
+                                <a href="{{ url_for('verify') }}" class="btn btn-outline-success">Start Verification</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card h-100 text-center">
+                            <div class="card-body">
+                                <i class="fas fa-users-cog fa-3x text-warning mb-3"></i>
+                                <h5 class="card-title">Manage</h5>
+                                <p class="card-text">Manage registered users</p>
+                                <a href="{{ url_for('manage') }}" class="btn btn-outline-warning">Manage Users</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <h5><i class="fas fa-info-circle"></i> How it works</h5>
+                    <ol class="mb-0">
+                        <li>Enroll your face by taking a photo</li>
+                        <li>The system securely stores your face data</li>
+                        <li>When verifying, the system compares your face with stored data</li>
+                        <li>Access is granted if your face matches</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h3 class="card-title mb-0 text-center">
+                    <i class="fas fa-lock"></i> Face Verification
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> Look directly at the camera for the best results.
+                </div>
+                
+                <div class="text-center mb-4">
+                    <div class="camera-container">
+                        <video id="video" class="video-element" autoplay playsinline></video>
+                        <canvas id="canvas" class="canvas-element" style="display: none;"></canvas>
+                        <div class="camera-overlay">
+                            <div class="face-outline"></div>
+                        </div>
+                        <div id="camera-status" class="camera-status bg-secondary">
+                            <i class="fas fa-camera"></i> Camera inactive
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-grid gap-2">
+                    <button id="startCamera" class="btn btn-primary">
+                        <i class="fas fa-video"></i> Start Camera
+                    </button>
+                    <button id="verifyFace" class="btn btn-success" disabled>
+                        <i class="fas fa-user-check"></i> Verify Identity
+                    </button>
+                </div>
+                
+                <div id="result" class="mt-3" style="display: none;"></div>
+                
+                <div id="authSuccess" class="auth-result mt-4 text-center" style="display: none;">
+                    <div class="auth-icon success">
+                        <i class="fas fa-check-circle fa-5x text-success"></i>
+                    </div>
+                    <h3 class="text-success">Authentication Successful!</h3>
+                    <p class="user-name">Welcome, <span id="userName"></span></p>
+                    <p class="confidence">Confidence: <span id="confidenceScore"></span>%</p>
+                </div>
+                
+                <div id="authFailure" class="auth-result mt-4 text-center" style="display: none;">
+                    <div class="auth-icon failure">
+                        <i class="fas fa-times-circle fa-5x text-danger"></i>
+                    </div>
+                    <h3 class="text-danger">Authentication Failed</h3>
+                    <p class="error-message">Face not recognized or no match found.</p>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/camera.js') }}"></script>
+<script src="{{ url_for('static', filename='js/verify.js') }}"></script>
+{% endblock %}
